@@ -1,6 +1,6 @@
 import './Home.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMusic, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faMusic, faArrowRight,faTruckFast, faLock, faHeart, faBolt } from '@fortawesome/free-solid-svg-icons';
 import { faTwitter, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import AirPods from'../../assets/AirPods-Max.png'
 import  BestSellers  from '../../db';
@@ -79,12 +79,52 @@ export default function Home() {
 
 
         <section>
+            <h1 className='Title'>
+                BEST SALES 
+            </h1>
             <div className='cards'>
                 {BestSellers.map((item,index)=>(
                     <ProductsCard key={index} product={item}/>
                 ))}
             </div>
         </section>
+
+        <section className="why-shoptech">
+            <div className="overlay"></div>
+
+            <div className="why-container">
+                <h2 className="why-title">
+                Pourquoi <span>ShopTech</span> ?
+                </h2>
+
+                <div className="why-cards">
+                <div className="why-card">
+                    <FontAwesomeIcon icon={faTruckFast} className="icon" />
+                    <h3>Livraison rapide</h3>
+                    <p>Recevez vos produits en un temps record partout au pays.</p>
+                </div>
+
+                <div className="why-card">
+                    <FontAwesomeIcon icon={faLock} className="icon" />
+                    <h3>Paiement sécurisé</h3>
+                    <p>Transactions protégées avec des systèmes fiables.</p>
+                </div>
+
+                <div className="why-card">
+                    <FontAwesomeIcon icon={faHeart} className="icon" />
+                    <h3>Produits favoris</h3>
+                    <p>Ajoutez vos produits préférés et retrouvez-les facilement.</p>
+                </div>
+
+                <div className="why-card">
+                    <FontAwesomeIcon icon={faBolt} className="icon" />
+                    <h3>Interface rapide</h3>
+                    <p>Navigation fluide, rapide et optimisée.</p>
+                </div>
+                </div>
+            </div>
+        </section>
+
     </>
   );
 }
