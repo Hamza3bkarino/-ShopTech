@@ -1,12 +1,23 @@
 // components/Navbar.jsx
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShoppingCart, faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
+import {  faBars, faTimes  } from "@fortawesome/free-solid-svg-icons";
+import { faHeart } from '@fortawesome/free-regular-svg-icons';
+import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
+
+
 import "./Navbar.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { openSidebar } from "../../lib/CartSlice";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
+  const dispatch = useDispatch()
+  const wishlist = useSelector((state) => state.wishlist);
+  const cart = useSelector((state) => state.cart);
+
 
   return (
     <nav className="navbar">
@@ -30,14 +41,36 @@ export default function Navbar() {
           <li>
             <Link to="/catalogue" > Catalogue </Link>
           </li>
-          <li>
-            <Link to="/wishlist"  > Wishlist </Link>
-          </li>
+          
         </ul>
 
         {/* Cart */}
-        <div className="cart-icon">
-          <FontAwesomeIcon icon={faShoppingCart} size="lg" />
+        <div className="icons">
+          <div className="HeartIcon">
+            {wishlist.length > 0 && (
+              <span className="likeLength">{wishlist.length}</span>
+            )}
+
+            <FontAwesomeIcon
+              icon={faHeart}
+              size="lg"
+              className="wishlist"
+              onClick={() => navigate('/wishlist')}
+            />
+          </div>
+          <div className="cartIcon">
+            {cart.items.length > 0 && (
+              <span className="cartLength">{cart.items.length}</span>
+            )}
+
+            <FontAwesomeIcon 
+                icon={faCartShopping} 
+                size="lg" className="cart" 
+                onClick={() => dispatch(openSidebar())} 
+            />
+
+          </div>
+
         </div>
       </div>
     </nav>

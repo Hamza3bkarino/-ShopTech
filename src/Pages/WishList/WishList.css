@@ -1,0 +1,133 @@
+.wishlist-container-wrapper {
+  height: 100vh;       /* full viewport height */
+  padding-top: 80px;   /* push content below navbar */
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-bottom: 2rem;
+  overflow-y: auto;
+  background: #f8f8f8;
+}
+
+
+
+.wishlist-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 2rem;
+  padding: 2rem;
+}
+
+@media (max-width: 768px) {
+  .wishlist-container {
+    grid-template-columns: 1fr; 
+  }
+}
+
+
+.empty-wishlist {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #666;
+}
+
+.wishlist-card {
+  display: flex;
+  gap: 1.5rem;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.wishlist-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.wishlist-img {
+  flex-shrink: 0;
+  width: 180px;
+  height: 180px;
+  overflow: hidden;
+  background: #f8f9fa;
+}
+
+.wishlist-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.wishlist-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+}
+
+.wishlist-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+  color: #1a1a1a;
+}
+
+.wishlist-price {
+  margin: 0.5rem 0;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.current-price {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #d4ff00;
+}
+
+.old-price {
+  font-size: 1rem;
+  color: #999;
+  text-decoration: line-through;
+}
+
+.wishlist-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.remove-btn {
+  background: #ff4757;
+  color: white;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.remove-btn:hover {
+  background: #e63c4f;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .wishlist-card {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .wishlist-img {
+    width: 100%;
+    height: 250px;
+  }
+
+  .wishlist-content {
+    padding: 1rem;
+    align-items: center;
+    text-align: center;
+  }
+}

@@ -5,7 +5,6 @@ import { faTwitter, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg
 import AirPods from'../../assets/AirPods-Max.png'
 import  BestSellers  from '../../db';
 import ProductsCard from '../../Components/Products/ProductsCard';
-import Footer from '../../Components/Footer/Footer';
 
 
 export default function Home() {
@@ -85,7 +84,7 @@ export default function Home() {
             </h1>
             <div className='cards'>
                 {BestSellers.map((item,index)=>(
-                    <ProductsCard key={index} product={item}/>
+                    <ProductsCard key={item.id} product={item}/>
                 ))}
             </div>
         </section>
@@ -125,9 +124,7 @@ export default function Home() {
                 </div>
             </div>
         </section>
-        <section>
-            <Footer/>
-        </section>
+       
 
     </>
   );

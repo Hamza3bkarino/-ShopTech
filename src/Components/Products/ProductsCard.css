@@ -1,9 +1,10 @@
         .product-card-container {
-          padding: 2rem;
+          padding: 0;
         }
 
         .product-card {
-          width: 320px;
+          width: 100%;
+          max-width: 320px;
           background: white;
           border-radius: 16px;
           overflow: hidden;
