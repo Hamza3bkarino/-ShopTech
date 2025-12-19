@@ -392,12 +392,14 @@
       padding: 60px 0 0 30px;
     }
 
-    .cards{
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-        padding: 2rem;
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      padding: 2rem;
+      justify-items: center; 
     }
+
 
 
 

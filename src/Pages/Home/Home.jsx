@@ -5,9 +5,11 @@ import { faTwitter, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg
 import AirPods from'../../assets/AirPods-Max.png'
 import  BestSellers  from '../../db';
 import ProductsCard from '../../Components/Products/ProductsCard';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function Home() {
+    const navigate = useNavigate()
   return (
     <>
         <section>
@@ -42,7 +44,7 @@ export default function Home() {
                 </div>
 
                 <button className="cta-button">
-                <span>View All Products</span>
+                <span onClick={()=>navigate('/catalogue')}>View All Products</span>
                 <div className="button-icon">
                     <FontAwesomeIcon icon={faArrowRight} size="lg" />
                 </div>

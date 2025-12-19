@@ -1,0 +1,107 @@
+.confirmation-page {
+  padding: 120px 20px;
+  background: #f6f7fb;
+}
+
+.confirmation-container {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.confirmation-form,
+.order-summary {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+}
+
+.confirmation-form h2,
+.order-summary h2 {
+  margin-bottom: 1.5rem;
+}
+
+/* FORM */
+.input-group {
+  display: flex;
+  gap: 1rem;
+}
+
+.confirmation-form input,
+.confirmation-form textarea {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 15px;
+  font-family: "Ubuntu", sans-serif;
+}
+
+.confirmation-form textarea {
+  resize: none;
+  height: 100px;
+}
+
+.confirm-btn {
+  width: 100%;
+  padding: 15px;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  background: black;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.confirm-btn:hover {
+  background: #333;
+}
+
+/* ORDER SUMMARY */
+.summary-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.summary-item img {
+  width: 55px;
+  border-radius: 10px;
+}
+
+.summary-item h4 {
+  font-size: 14px;
+}
+
+.summary-item p {
+  font-size: 13px;
+  color: #777;
+}
+
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .confirmation-container {
+    grid-template-columns: 1fr;
+  }
+
+  .input-group {
+    flex-direction: column;
+  }
+}

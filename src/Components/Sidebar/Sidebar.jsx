@@ -3,11 +3,12 @@ import { incrementQty, decrementQty, removeFromCart, closeSidebar } from "../../
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPlus, faMinus, faXmark } from "@fortawesome/free-solid-svg-icons";
 import "./Sidebar.css";
+import { useNavigate } from "react-router-dom";
 
 export default function SideBar() {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
-
+  const navigate = useNavigate();
   const totalPrice = cart.items.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
 
   if (!cart.isOpen) return null;
@@ -33,7 +34,7 @@ export default function SideBar() {
                   <button onClick={() => dispatch(decrementQty(item.id))}><FontAwesomeIcon icon={faMinus} /></button>
                   <span>{item.quantity}</span>
                   <button onClick={() => dispatch(incrementQty(item.id))}><FontAwesomeIcon icon={faPlus} /></button>
-                </div>
+                </div>  
               </div>
               <button className="cart-item-remove" onClick={() => dispatch(removeFromCart(item.id))}>
                 <FontAwesomeIcon icon={faTrash} />
@@ -45,7 +46,14 @@ export default function SideBar() {
         {cart.items.length > 0 && (
           <div className="cart-footer">
             <h3>Total: ${totalPrice}</h3>
-            <button className="checkout-btn">Checkout</button>
+            <button className="checkout-btn" 
+              onClick={()=> {
+              navigate('/confirmation') ;
+              dispatch(closeSidebar());
+              }
+            }>
+              Checkout
+            </button>
           </div>
         )}
       </div>

@@ -6,6 +6,8 @@ import Footer from './Components/Footer/Footer'
 import Catalogue from './Pages/Catalogue/Catalogue'
 import WishList from './Pages/WishList/WishList'
 import SideBar from './Components/Sidebar/Sidebar'
+import Details from './Pages/Details/Details'
+import Confirmation from './Components/Confirmation/Confirmation'
 
 function App() {
   
@@ -19,6 +21,8 @@ function App() {
           <Route path='/' element={<Home/>}/>
           <Route path='/catalogue' element={<Catalogue/>}/>
           <Route path='/wishlist' element={<WishList/>}/>
+          <Route path='/details/:id' element={<Details/>}/>
+          <Route path='/confirmation' element={<Confirmation/>}/>
 
         </Routes>
         <Footer/>

@@ -1,11 +1,15 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart as solidHeart, faCartShopping, faCheck } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons';
+import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { useMemo, useState } from 'react';
 import './ProductsCard.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleWishlist } from "../../lib/WishlistSlice";
 import { addToCart } from '../../lib/CartSlice';
+import { useNavigate } from 'react-router-dom';
+
+
 
 const HeartIcon = ({ filled }) => (
     <FontAwesomeIcon 
@@ -23,8 +27,13 @@ const CheckIcon = () => (
     <FontAwesomeIcon icon={faCheck} color="white" size="lg" />
 );
 
-export default function ProductsCard ({product}) {
+const EyeIcon = () => (
+    <FontAwesomeIcon icon={faEye} size="lg" />
+);
 
+
+export default function ProductsCard ({product}) {
+    const navigate = useNavigate()
     const dispatch = useDispatch();
     const wishlist = useSelector((state) => state.wishlist);
     
@@ -42,7 +51,6 @@ export default function ProductsCard ({product}) {
         dispatch(addToCart(product));
         setAdded(true);
 
-        // Revert back to "Add to Cart" after 1.5 seconds
         setTimeout(() => {
             setAdded(false);
         }, 1500);
@@ -54,7 +62,7 @@ export default function ProductsCard ({product}) {
 
     return (
         <div className="product-card-container">
-            <div className="product-card">
+            <div className="product-card" >
                 <div className="product-image-container">
                     <img 
                         src={product.img} 
@@ -78,10 +86,24 @@ export default function ProductsCard ({product}) {
                     >
                         <HeartIcon filled={isLiked} />
                     </button>
+
+                    
                 </div>
 
                 <div className="product-content">
-                    <h3 className="product-name">{product.title}</h3>
+                    <div className='Title-EyeIcon'>
+                        <h3 className="product-name">{product.title}</h3>
+                        <button
+                            className="eye-button"
+                            onClick={(e) => {
+                                e.stopPropagation(); // prevent card click conflict
+                                navigate(`/details/${product.id}`);
+                            }}
+                            aria-label="View product"
+                        >
+                            <EyeIcon />
+                        </button>
+                    </div>
 
                     <div className="price-section">
                         <div className="price-wrapper">
